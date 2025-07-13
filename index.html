@@ -19,6 +19,9 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         body.dark-theme {
@@ -31,8 +34,8 @@
 
         .theme-toggle {
             position: fixed;
-            top: 30px;
-            left: 30px;
+            top: 20px;
+            left: 20px;
             background: rgba(0, 0, 0, 0.1);
             border: 2px solid #3498db;
             padding: 8px 16px;
@@ -41,6 +44,7 @@
             font-size: 0.9rem;
             transition: all 0.3s ease;
             z-index: 1000;
+            user-select: none;
         }
 
         body.dark-theme .theme-toggle {
@@ -60,7 +64,7 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            padding: 40px;
+            padding: 20px;
         }
 
         .slide {
@@ -269,27 +273,10 @@
             background: rgba(231, 76, 60, 0.15);
         }
 
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.95rem;
-            background: rgba(52, 152, 219, 0.1);
-            padding: 10px 20px;
-            border-radius: 25px;
-            border: 1px solid rgba(52, 152, 219, 0.3);
-        }
-
-        body.dark-theme .navigation {
-            background: rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 255, 255, 0.3);
-        }
-
         .slide-counter {
             position: fixed;
-            top: 30px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             font-size: 1.1rem;
             background: rgba(52, 152, 219, 0.1);
             padding: 10px 20px;
@@ -478,6 +465,169 @@
         body.dark-theme .subtitle {
             color: #bdc3c7;
         }
+
+        .thank-you-slide {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 60vh;
+        }
+
+        .thank-you-slide h1 {
+            font-size: 5rem;
+            margin-bottom: 30px;
+        }
+
+        .thank-you-slide p {
+            font-size: 1.8rem;
+            color: #3498db;
+        }
+
+        body.dark-theme .thank-you-slide p {
+            color: #5dade2;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .presentation-container {
+                padding: 15px;
+            }
+
+            .slide-title {
+                font-size: 1.1rem;
+                padding: 8px 20px;
+                margin-bottom: 25px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+                margin-bottom: 20px;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+            }
+
+            p, li {
+                font-size: 1.1rem;
+                line-height: 1.6;
+            }
+
+            .app-name {
+                font-size: 3.5rem;
+                letter-spacing: 2px;
+            }
+
+            .content-box {
+                padding: 25px;
+                margin: 20px auto;
+            }
+
+            .feature-container,
+            .tech-showcase {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                margin: 25px 0;
+            }
+
+            .benefit-section {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .steps-flow {
+                flex-direction: column;
+                gap: 15px;
+                margin: 30px 0;
+            }
+
+            .step-circle {
+                width: 120px;
+                height: 120px;
+                font-size: 0.9rem;
+                padding: 15px;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                font-size: 1.5rem;
+            }
+
+            .diagram-area {
+                padding: 20px;
+            }
+
+            .diagram-steps {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .diagram-node {
+                width: 100%;
+                max-width: 200px;
+                height: 70px;
+                font-size: 0.85rem;
+            }
+
+            .connector {
+                transform: rotate(90deg);
+            }
+
+            .theme-toggle {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+                top: 15px;
+                left: 15px;
+            }
+
+            .slide-counter {
+                font-size: 1rem;
+                padding: 8px 15px;
+                top: 15px;
+                right: 15px;
+            }
+
+            .thank-you-slide h1 {
+                font-size: 3rem;
+            }
+
+            .thank-you-slide p {
+                font-size: 1.4rem;
+            }
+
+            .feature-box,
+            .tech-item,
+            .benefit-item,
+            .challenge-block,
+            .problem-item {
+                padding: 18px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .app-name {
+                font-size: 2.8rem;
+            }
+
+            .content-box {
+                padding: 20px;
+            }
+
+            p, li {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -632,24 +782,28 @@
                 <h3>Technical Flow:</h3>
                 <p>User Input → AI Processing → Database Query → Algorithmic Calculation → Comprehensive Report Generation</p>
             </div>
-            <h2 style="margin-top: 35px;">Thank You</h2>
-            <p class="subtitle">Questions and Discussion</p>
+        </div>
+
+        <!-- Slide 8: Thank You -->
+        <div class="slide">
+            <div class="thank-you-slide">
+                <h1>Thank You</h1>
+                <p>Questions and Discussion</p>
+            </div>
         </div>
 
     </div>
 
     <div class="slide-counter">
-        <span id="current-slide">1</span> / <span id="total-slides">7</span>
-    </div>
-
-    <div class="navigation">
-        Click anywhere or use arrow keys to navigate
+        <span id="current-slide">1</span> / <span id="total-slides">8</span>
     </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');
         const totalSlides = slides.length;
+        let touchStartX = 0;
+        let touchEndX = 0;
         
         document.getElementById('total-slides').textContent = totalSlides;
         
@@ -683,13 +837,33 @@
             document.body.classList.add('dark-theme');
         }
         
+        // Touch support for mobile
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+        
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+        
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide(); // Swipe left
+            }
+            if (touchEndX > touchStartX + 50) {
+                prevSlide(); // Swipe right
+            }
+        }
+        
+        // Click support (avoiding the theme toggle)
         document.addEventListener('click', function(event) {
-            // Don't advance slide if clicking theme toggle
             if (event.target && event.target.classList && !event.target.classList.contains('theme-toggle')) {
                 nextSlide();
             }
         });
         
+        // Keyboard support
         document.addEventListener('keydown', function(event) {
             if (event.code === 'Space' || event.key === 'ArrowRight') {
                 event.preventDefault();
