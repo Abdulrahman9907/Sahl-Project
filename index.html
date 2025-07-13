@@ -425,6 +425,77 @@
             background: #5dade2;
         }
 
+        .tech-progress {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide.active[data-slide-index="3"] .tech-progress {
+            opacity: 1;
+        }
+
+        .tech-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-dot.active {
+            background: #3498db;
+            transform: scale(1.2);
+        }
+
+        body.dark-theme .tech-dot {
+            background: rgba(93, 173, 226, 0.3);
+        }
+
+        .tech-hint {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
+        }
+
+        .slide.active[data-slide-index="3"] .tech-hint {
+            opacity: 1;
+        }
+
+        .slide.active[data-slide-index="3"] .tech-hint.hide {
+            opacity: 0;
+        }
+
+        .visual-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        .visual-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin: 10px 0;
+        }
+
+        body.dark-theme .tech-hint {
+            color: #95a5a6;
+        }
+
         .presentation-scaler {
             transform-origin: center center;
             transition: transform 0.3s ease;
@@ -433,6 +504,10 @@
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        body.dark-theme .tech-dot.active {
+            background: #5dade2;
         }
 
         .steps-flow {
@@ -510,6 +585,21 @@
             border-radius: 10px;
             border: 2px solid #e8f4f8;
             transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
+        }
+
+        .tech-item.visible {
+            display: block;
+            animation: techCardReveal 0.5s ease-out forwards;
+        }
+
+        @keyframes techCardReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         body.dark-theme .tech-item {
@@ -527,13 +617,59 @@
             border-color: #2ecc71;
         }
 
-        .tech-item:hover {
+        .tech-item.visible:hover {
             transform: translateY(-2px);
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
         }
 
-        body.dark-theme .tech-item:hover {
+        body.dark-theme .tech-item.visible:hover {
             box-shadow: 0 3px 15px rgba(52, 152, 219, 0.25);
+        }
+
+        .tech-visual {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(52, 152, 219, 0.05);
+            border-radius: 8px;
+            text-align: center;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        body.dark-theme .tech-visual {
+            background: rgba(52, 152, 219, 0.2);
+        }
+
+        .tech-visual-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .visual-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .visual-node {
+            background: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+        }
+
+        body.dark-theme .visual-node {
+            background: #5dade2;
+        }
+
+        .visual-arrow {
+            color: #2ecc71;
+            font-size: 1.2rem;
         }
 
         .challenge-block {
@@ -683,6 +819,43 @@
                 margin: 25px 0;
             }
 
+            .tech-visual {
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+
+            .tech-visual-icon {
+                font-size: 2.5rem;
+            }
+
+            .visual-node {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+
+            .visual-flow {
+                gap: 5px;
+            }
+
+            .tech-progress {
+                bottom: 15px;
+            }
+
+            .tech-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .tech-hint {
+                bottom: 40px;
+                font-size: 0.8rem;
+                padding: 0 15px;
+            }
+
+            .visual-factors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
             .benefit-section {
                 grid-template-columns: 1fr;
                 gap: 20px;
@@ -822,7 +995,7 @@
             <div class="content-box">
                 <h3>AI-Powered Car Valuation Platform</h3>
                 <p>An intelligent application that provides accurate car valuations using machine learning</p>
-                <p class="subtitle">Sahl = "Easy" in Arabic - Making car pricing transparent and accessible</p>
+                <p class="subtitle">Sahl = "Easy" in Arabic - because pricing cars should be easy, transparent, and accessible</p>
             </div>
         </div>
 
@@ -851,11 +1024,11 @@
             <div class="slide-title">Solution Overview</div>
             <div class="steps-flow">
                 <div class="step-circle">
-                    📸<br>Upload Vehicle Images
+                    📝<br>Input Vehicle Details
                 </div>
                 <div class="flow-arrow">➤</div>
                 <div class="step-circle">
-                    📝<br>Input Vehicle Details
+                    📸<br>Upload Vehicle Images
                 </div>
                 <div class="flow-arrow">➤</div>
                 <div class="step-circle">
@@ -872,25 +1045,82 @@
         </div>
 
         <!-- Slide 4: AI/ML Technologies -->
-        <div class="slide">
+        <div class="slide" data-slide-index="3">
             <div class="slide-title">Technical Implementation</div>
-            <div class="tech-showcase">
-                <div class="tech-item">
+            <div class="tech-showcase" data-current-card="0">
+                <div class="tech-item" data-card="0">
                     <h3>Machine Learning Models</h3>
                     <p>Random Forest algorithms trained on extensive historical sales data for price prediction</p>
+                    <div class="tech-visual">
+                        <div class="tech-visual-icon">🌳</div>
+                        <div class="visual-flow">
+                            <div class="visual-node">Historical Data</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">Random Forest</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">Price Prediction</div>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.8rem;">
+                            Accuracy: 92% | Training Data: 50K+ vehicles
+                        </div>
+                    </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-card="1">
                     <h3>Computer Vision</h3>
                     <p>Convolutional Neural Networks assess vehicle condition through image analysis</p>
+                    <div class="tech-visual">
+                        <div class="tech-visual-icon">👁️</div>
+                        <div class="visual-flow">
+                            <div class="visual-node">Car Image</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">CNN Layers</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">Condition Score</div>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.8rem;">
+                            Detects: Damage, Wear, Modifications
+                        </div>
+                    </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-card="2">
                     <h3>Multi-Factor Analysis</h3>
                     <p>Processes 20+ variables including age, mileage, brand reputation, and geographic factors</p>
+                    <div class="tech-visual">
+                        <div class="tech-visual-icon">📊</div>
+                        <div class="visual-factors-grid">
+                            <div class="visual-node">Age</div>
+                            <div class="visual-node">Mileage</div>
+                            <div class="visual-node">Brand</div>
+                            <div class="visual-node">Location</div>
+                        </div>
+                        <div style="font-size: 1.5rem; margin: 5px;">+</div>
+                        <div style="font-size: 0.8rem;">16 more factors analyzed in real-time</div>
+                    </div>
                 </div>
-                <div class="tech-item">
+                <div class="tech-item" data-card="3">
                     <h3>Adaptive Learning</h3>
                     <p>Continuous model improvement through real-time market data integration</p>
+                    <div class="tech-visual">
+                        <div class="tech-visual-icon">🔄</div>
+                        <div class="visual-flow">
+                            <div class="visual-node">New Sales Data</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">Model Update</div>
+                            <span class="visual-arrow">→</span>
+                            <div class="visual-node">Better Accuracy</div>
+                        </div>
+                        <div style="margin-top: 10px; font-size: 0.8rem;">
+                            Updates: Daily | Improvement: +0.5% monthly
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="tech-hint" id="techHint">Click to reveal technical implementations</div>
+            <div class="tech-progress">
+                <div class="tech-dot active" data-dot="0"></div>
+                <div class="tech-dot" data-dot="1"></div>
+                <div class="tech-dot" data-dot="2"></div>
+                <div class="tech-dot" data-dot="3"></div>
             </div>
         </div>
 
@@ -993,9 +1223,76 @@
             slides.forEach(slide => slide.classList.remove('active'));
             slides[index].classList.add('active');
             document.getElementById('current-slide').textContent = index + 1;
+            
+            // Reset tech cards visibility when entering slide 4
+            if (index === 3) {
+                const techShowcase = slides[index].querySelector('.tech-showcase');
+                const techCards = techShowcase.querySelectorAll('.tech-item');
+                const techDots = slides[index].querySelectorAll('.tech-dot');
+                const techHint = slides[index].querySelector('.tech-hint');
+                techShowcase.setAttribute('data-current-card', '0');
+                
+                techCards.forEach((card, cardIndex) => {
+                    card.classList.remove('visible');
+                    if (cardIndex === 0) {
+                        setTimeout(() => card.classList.add('visible'), 100);
+                    }
+                });
+                
+                // Reset progress dots
+                techDots.forEach((dot, dotIndex) => {
+                    if (dotIndex === 0) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Reset hint
+                techHint.classList.remove('hide');
+            }
+        }
+        
+        function handleSlide4Click() {
+            const slide4 = slides[3];
+            const techShowcase = slide4.querySelector('.tech-showcase');
+            const currentCard = parseInt(techShowcase.getAttribute('data-current-card'));
+            const techCards = techShowcase.querySelectorAll('.tech-item');
+            const techDots = slide4.querySelectorAll('.tech-dot');
+            const techHint = slide4.querySelector('.tech-hint');
+            
+            if (currentCard < techCards.length - 1) {
+                const nextCard = currentCard + 1;
+                techCards[nextCard].classList.add('visible');
+                techShowcase.setAttribute('data-current-card', nextCard);
+                
+                // Update progress dots
+                techDots.forEach((dot, index) => {
+                    if (index <= nextCard) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+                
+                // Hide hint when all cards are revealed
+                if (nextCard === techCards.length - 1) {
+                    techHint.classList.add('hide');
+                }
+                
+                return true; // Stay on current slide
+            }
+            return false; // Move to next slide
         }
         
         function nextSlide() {
+            // Check if we're on slide 4 and have more cards to show
+            if (currentSlide === 3) {
+                if (handleSlide4Click()) {
+                    return; // Don't advance slide
+                }
+            }
+            
             if (currentSlide < totalSlides - 1) {
                 currentSlide++;
                 showSlide(currentSlide);
@@ -1004,8 +1301,21 @@
         
         function prevSlide() {
             if (currentSlide > 0) {
-                currentSlide--;
-                showSlide(currentSlide);
+                // If moving back TO slide 4, show all cards
+                if (currentSlide - 1 === 3) {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                    const slide4 = slides[3];
+                    const techShowcase = slide4.querySelector('.tech-showcase');
+                    const techCards = techShowcase.querySelectorAll('.tech-item');
+                    const techDots = slide4.querySelectorAll('.tech-dot');
+                    techShowcase.setAttribute('data-current-card', (techCards.length - 1).toString());
+                    techCards.forEach(card => card.classList.add('visible'));
+                    techDots.forEach(dot => dot.classList.add('active'));
+                } else {
+                    currentSlide--;
+                    showSlide(currentSlide);
+                }
             }
         }
         
