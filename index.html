@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahl Car Price App - Professional Presentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Light theme (default) */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f7fa;
+            color: #2c3e50;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme {
+            background: #1a2332;
+            background-image: 
+                radial-gradient(circle at 25% 25%, rgba(52, 152, 219, 0.1) 0%, transparent 60%),
+                radial-gradient(circle at 75% 75%, rgba(46, 204, 113, 0.1) 0%, transparent 60%);
+            color: #ffffff;
+        }
+
+        .theme-toggle {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 2px solid #3498db;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        body.dark-theme .theme-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #2ecc71;
+            color: #ffffff;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.05);
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 40px;
+        }
+
+        .slide {
+            display: none;
+            text-align: center;
+            width: 100%;
+            max-width: 1400px;
+            animation: fadeInUp 0.4s ease-out;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-title {
+            background: linear-gradient(135deg, #3498db, #2ecc71);
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 35px;
+            display: inline-block;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+        }
+
+        body.dark-theme .slide-title {
+            background: linear-gradient(135deg, #2980b9, #27ae60);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        body.dark-theme h1 {
+            background: linear-gradient(45deg, #5dade2, #58d68d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            color: #2980b9;
+            font-weight: 700;
+        }
+
+        body.dark-theme h2 {
+            color: #5dade2;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 18px;
+            color: #27ae60;
+            font-weight: 600;
+        }
+
+        body.dark-theme h3 {
+            color: #58d68d;
+        }
+
+        p, li {
+            font-size: 1.3rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+
+        ul {
+            text-align: left;
+            display: inline-block;
+            margin: 20px 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        li:before {
+            content: "▸";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        body.dark-theme li:before {
+            color: #5dade2;
+        }
+
+        .content-box {
+            background: rgba(52, 152, 219, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 35px;
+            border-radius: 15px;
+            margin: 25px auto;
+            border: 1px solid rgba(52, 152, 219, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 1000px;
+        }
+
+        body.dark-theme .content-box {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .feature-box {
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            border: 2px solid #e8f4f8;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark-theme .feature-box {
+            background: rgba(52, 152, 219, 0.15);
+            border-color: #3498db;
+            box-shadow: none;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark-theme .feature-box:hover {
+            box-shadow: 0 5px 20px rgba(52, 152, 219, 0.3);
+        }
+
+        .feature-box:nth-child(even) {
+            border-color: #e8f8f5;
+        }
+
+        body.dark-theme .feature-box:nth-child(even) {
+            background: rgba(46, 204, 113, 0.15);
+            border-color: #2ecc71;
+        }
+
+        .benefit-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 35px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .benefit-item {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.08), rgba(52, 152, 219, 0.08));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        body.dark-theme .benefit-item {
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.2), rgba(52, 152, 219, 0.2));
+        }
+
+        .problem-item {
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 12px 0;
+            border-left: 4px solid #e74c3c;
+            text-align: left;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        body.dark-theme .problem-item {
+            background: rgba(231, 76, 60, 0.15);
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.95rem;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
+        }
+
+        body.dark-theme .navigation {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            font-size: 1.1rem;
+            background: rgba(52, 152, 219, 0.1);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid #3498db;
+        }
+
+        body.dark-theme .slide-counter {
+            background: rgba(0, 0, 0, 0.6);
+            border-color: #2ecc71;
+        }
+
+        .steps-flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .step-circle {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            padding: 20px;
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        body.dark-theme .step-circle {
+            background: linear-gradient(135deg, #5dade2, #3498db);
+        }
+
+        .flow-arrow {
+            font-size: 2rem;
+            color: #2ecc71;
+        }
+
+        body.dark-theme .flow-arrow {
+            color: #58d68d;
+        }
+
+        .app-name {
+            font-size: 5rem;
+            background: linear-gradient(45deg, #3498db, #2ecc71, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        body.dark-theme .app-name {
+            background: linear-gradient(45deg, #5dade2, #58d68d, #5dade2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tech-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 35px 0;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tech-item {
+            background: #f8fbfd;
+            padding: 22px;
+            border-radius: 10px;
+            border: 2px solid #e8f4f8;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme .tech-item {
+            background: rgba(52, 152, 219, 0.12);
+            border-color: #3498db;
+        }
+
+        .tech-item:nth-child(even) {
+            background: #f5fdf9;
+            border-color: #e8f8f5;
+        }
+
+        body.dark-theme .tech-item:nth-child(even) {
+            background: rgba(46, 204, 113, 0.12);
+            border-color: #2ecc71;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark-theme .tech-item:hover {
+            box-shadow: 0 3px 15px rgba(52, 152, 219, 0.25);
+        }
+
+        .challenge-block {
+            background: #fff9f5;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px auto;
+            border: 2px solid #f39c12;
+            text-align: left;
+            max-width: 1000px;
+        }
+
+        body.dark-theme .challenge-block {
+            background: rgba(243, 156, 18, 0.15);
+            border-color: #f39c12;
+        }
+
+        .diagram-area {
+            background: #f8fbfd;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 35px auto;
+            max-width: 1100px;
+            border: 2px solid #3498db;
+        }
+
+        body.dark-theme .diagram-area {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #5dade2;
+        }
+
+        .diagram-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .diagram-node {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            padding: 18px;
+            border-radius: 8px;
+            width: 135px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+        }
+
+        body.dark-theme .diagram-node {
+            background: linear-gradient(135deg, #58d68d, #2ecc71);
+        }
+
+        .connector {
+            font-size: 1.4rem;
+            color: #3498db;
+        }
+
+        body.dark-theme .connector {
+            color: #5dade2;
+        }
+
+        .subtitle {
+            color: #7f8c8d;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        body.dark-theme .subtitle {
+            color: #bdc3c7;
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    
+    <div class="presentation-container">
+        
+        <!-- Slide 1: Product Name -->
+        <div class="slide active">
+            <div class="slide-title">Product Introduction</div>
+            <div class="app-name">SAHL</div>
+            <div class="content-box">
+                <h3>AI-Powered Car Valuation Platform</h3>
+                <p>An intelligent application that provides accurate car valuations using machine learning</p>
+                <p class="subtitle">Sahl = "Easy" in Arabic - Making car pricing transparent and accessible</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Problem it Solves -->
+        <div class="slide">
+            <div class="slide-title">Problem Statement</div>
+            <div class="content-box">
+                <h3>Current Market Challenges:</h3>
+                <div class="problem-item">
+                    <strong>Price Uncertainty</strong> - Lack of standardized valuation tools leads to pricing confusion
+                </div>
+                <div class="problem-item">
+                    <strong>Information Asymmetry</strong> - Buyers and sellers operate with incomplete market data
+                </div>
+                <div class="problem-item">
+                    <strong>Time-Intensive Research</strong> - Manual price comparison across multiple platforms
+                </div>
+                <div class="problem-item">
+                    <strong>Market Gap</strong> - Absence of trusted valuation services like KBB in our region
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: How it Works -->
+        <div class="slide">
+            <div class="slide-title">Solution Overview</div>
+            <div class="steps-flow">
+                <div class="step-circle">
+                    📸<br>Upload Vehicle Images
+                </div>
+                <div class="flow-arrow">➤</div>
+                <div class="step-circle">
+                    📝<br>Input Vehicle Details
+                </div>
+                <div class="flow-arrow">➤</div>
+                <div class="step-circle">
+                    🤖<br>AI Analysis & Processing
+                </div>
+                <div class="flow-arrow">➤</div>
+                <div class="step-circle">
+                    💰<br>Receive Valuation Report
+                </div>
+            </div>
+            <div class="content-box">
+                <p>The platform analyzes visual data, processes market information, and delivers comprehensive pricing insights within seconds</p>
+            </div>
+        </div>
+
+        <!-- Slide 4: AI/ML Technologies -->
+        <div class="slide">
+            <div class="slide-title">Technical Implementation</div>
+            <div class="tech-showcase">
+                <div class="tech-item">
+                    <h3>Machine Learning Models</h3>
+                    <p>Random Forest algorithms trained on extensive historical sales data for price prediction</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Computer Vision</h3>
+                    <p>Convolutional Neural Networks assess vehicle condition through image analysis</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Multi-Factor Analysis</h3>
+                    <p>Processes 20+ variables including age, mileage, brand reputation, and geographic factors</p>
+                </div>
+                <div class="tech-item">
+                    <h3>Adaptive Learning</h3>
+                    <p>Continuous model improvement through real-time market data integration</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Benefits -->
+        <div class="slide">
+            <div class="slide-title">Value Proposition</div>
+            <div class="benefit-section">
+                <div class="benefit-item">
+                    <h3>For Sellers</h3>
+                    <ul>
+                        <li>Reduce research time by 90%</li>
+                        <li>Data-driven pricing strategies</li>
+                        <li>Enhanced negotiation position</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h3>For Buyers</h3>
+                    <ul>
+                        <li>Validate asking prices instantly</li>
+                        <li>Protect against overpricing</li>
+                        <li>Make informed purchase decisions</li>
+                    </ul>
+                </div>
+                <div class="benefit-item">
+                    <h3>Market Impact</h3>
+                    <ul>
+                        <li>Increased transaction transparency</li>
+                        <li>Reduced price manipulation</li>
+                        <li>Democratized market information</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Challenges and Risks -->
+        <div class="slide">
+            <div class="slide-title">Risk Mitigation Strategy</div>
+            <div class="challenge-block">
+                <h3>🎯 Challenge: Limited data for rare vehicles</h3>
+                <p><strong>Solution:</strong> Initial focus on high-volume models (Toyota, Nissan, Honda) with phased expansion as data accumulates</p>
+            </div>
+            <div class="challenge-block">
+                <h3>🎯 Challenge: Building user trust</h3>
+                <p><strong>Solution:</strong> Strategic partnerships with established dealerships, transparency in methodology, and free trial period</p>
+            </div>
+            <div class="challenge-block">
+                <h3>🎯 Challenge: Data acquisition and quality</h3>
+                <p><strong>Solution:</strong> Collaboration with automotive marketplaces and implementation of data validation protocols</p>
+            </div>
+        </div>
+
+        <!-- Slide 7: Product Diagram -->
+        <div class="slide">
+            <div class="slide-title">System Architecture</div>
+            <div class="diagram-area">
+                <div class="diagram-steps">
+                    <div class="diagram-node">Mobile/Web Interface</div>
+                    <div class="connector">→</div>
+                    <div class="diagram-node">Image Processing Module</div>
+                    <div class="connector">→</div>
+                    <div class="diagram-node">ML Prediction Engine</div>
+                    <div class="connector">→</div>
+                    <div class="diagram-node">Market Data Integration</div>
+                    <div class="connector">→</div>
+                    <div class="diagram-node">Valuation Dashboard</div>
+                </div>
+            </div>
+            <div class="content-box">
+                <h3>Technical Flow:</h3>
+                <p>User Input → AI Processing → Database Query → Algorithmic Calculation → Comprehensive Report Generation</p>
+            </div>
+            <h2 style="margin-top: 35px;">Thank You</h2>
+            <p class="subtitle">Questions and Discussion</p>
+        </div>
+
+    </div>
+
+    <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">7</span>
+    </div>
+
+    <div class="navigation">
+        Click anywhere or use arrow keys to navigate
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        
+        document.getElementById('total-slides').textContent = totalSlides;
+        
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            document.getElementById('current-slide').textContent = index + 1;
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+        
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
+        }
+        
+        // Load saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+        
+        document.addEventListener('click', function(event) {
+            // Don't advance slide if clicking theme toggle
+            if (event.target && event.target.classList && !event.target.classList.contains('theme-toggle')) {
+                nextSlide();
+            }
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.code === 'Space' || event.key === 'ArrowRight') {
+                event.preventDefault();
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                event.preventDefault();
+                prevSlide();
+            }
+        });
+        
+        // Prevent text selection during presentation
+        document.addEventListener('selectstart', function(e) {
+            if (e.target && e.target.classList && !e.target.classList.contains('theme-toggle')) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
