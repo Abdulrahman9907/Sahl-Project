@@ -1,1 +1,1 @@
-a simple demonstration of task 1 of python + ai program
+This is a simple demonstration of Task 1 of the [python + ai program](https://tuwaiq.edu.sa/bootcamp/KN6aXdMB/view).
