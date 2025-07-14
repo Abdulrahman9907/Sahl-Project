@@ -552,6 +552,7 @@
             opacity: 0;
             transform: translateY(20px);
             display: none;
+            overflow: hidden;
         }
 
         .tech-item.visible {
@@ -599,6 +600,7 @@
             font-family: monospace;
             font-size: 0.9rem;
             line-height: 1.4;
+            overflow: hidden;
         }
 
         body.dark-theme .tech-visual {
@@ -646,9 +648,11 @@
         }
 
         .visual-factors-grid .visual-node {
-            word-break: break-word;
+            word-break: break-all;
             font-size: 0.75rem;
             padding: 5px 6px;
+            min-width: 0;
+            overflow: hidden;
         }
 
         .tech-hint {
@@ -880,17 +884,32 @@
             background: #5dade2;
         }
 
+        pre {
+            margin: 0;
+            padding: 0;
+            background: none;
+            border: none;
+            font-family: 'Courier New', monospace !important;
+            text-align: left;
+        }
+
         .ascii-visualization {
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             font-size: 0.7rem;
             line-height: 1.2;
             white-space: pre;
             color: #2c3e50;
             margin: 15px 0;
+            text-align: left;
+            overflow-x: auto;
+            background: rgba(255, 255, 255, 0.5);
+            padding: 10px;
+            border-radius: 5px;
         }
 
         body.dark-theme .ascii-visualization {
             color: #ecf0f1;
+            background: rgba(0, 0, 0, 0.3);
         }
 
         /* Mobile Responsive Styles */
@@ -1036,6 +1055,9 @@
             .tech-visual {
                 padding: 15px;
                 font-size: 0.8rem;
+                overflow-x: auto;
+                overflow-y: hidden;
+                max-width: 100%;
             }
 
             .tech-visual-icon {
@@ -1077,9 +1099,22 @@
             .visual-factors-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .visual-factors-grid .visual-node {
+                font-size: 0.7rem;
+                padding: 4px 5px;
+            }
 
             .ascii-visualization {
-                font-size: 0.6rem;
+                font-size: 0.5rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 8px;
+                line-height: 1.1;
+            }
+
+            .tech-visual pre {
+                margin: 0;
             }
         }
 
@@ -1098,6 +1133,19 @@
 
             p, li {
                 font-size: 1rem;
+            }
+
+            .ascii-visualization {
+                font-size: 0.45rem;
+            }
+
+            .visual-factors-grid {
+                gap: 3px;
+            }
+
+            .visual-factors-grid .visual-node {
+                font-size: 0.65rem;
+                padding: 3px 4px;
             }
         }
     </style>
@@ -1163,7 +1211,6 @@
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
             </div>
         </div>
 
@@ -1175,26 +1222,23 @@
                     📝<br>Input Vehicle Details
                 </div>
                 <div class="flow-arrow" data-element="2">➤</div>
-                <div class="step-circle" data-element="3">
+                <div class="step-circle" data-element="2">
                     📸<br>Upload Vehicle Images
                 </div>
-                <div class="flow-arrow" data-element="4">➤</div>
-                <div class="step-circle" data-element="5">
+                <div class="flow-arrow" data-element="3">➤</div>
+                <div class="step-circle" data-element="3">
                     🤖<br>AI Analysis & Processing
                 </div>
-                <div class="flow-arrow" data-element="6">➤</div>
-                <div class="step-circle" data-element="7">
+                <div class="flow-arrow" data-element="4">➤</div>
+                <div class="step-circle" data-element="4">
                     💰<br>Receive Valuation Report
                 </div>
             </div>
-            <div class="content-box" data-element="8">
+            <div class="content-box" data-element="5">
                 <p>The platform analyzes visual data, processes market information, and delivers comprehensive pricing insights within seconds</p>
             </div>
             <div class="slide-progress">
                 <div class="progress-dot active"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
@@ -1211,28 +1255,26 @@
                     <h3>Machine Learning Models</h3>
                     <p>Random Forest algorithms trained on extensive historical sales data for price prediction</p>
                     <div class="tech-visual">
-                        <div class="ascii-visualization">
-                    Car Data
-                      │
-                 ┌────┴────┐
-                 │ Features │
-                 └────┬────┘
-                      │
-           ┌──────────┴──────────┐
-           │   Random Forest     │
-           │  ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
-           │  │T│ │T│ │T│ │T│  │  ← Decision Trees
-           │  │r│ │r│ │r│ │r│  │
-           │  │e│ │e│ │e│ │e│  │
-           │  │e│ │e│ │e│ │e│  │
-           │  └┬┘ └┬┘ └┬┘ └┬┘  │
-           │   └───┴───┴───┴───┐│
-           │              Voting││
-           └──────────┬─────────┘
-                      │
-                 Price Range
-                 $15K - $18K
-                        </div>
+                        <pre class="ascii-visualization">    Car Data
+       │
+  ┌────┴────┐
+  │Features │
+  └────┬────┘
+       │
+┌──────┴──────┐
+│Random Forest│
+│ ┌─┐┌─┐┌─┐┌─┐│
+│ │T││T││T││T││ ← Trees
+│ │r││r││r││r││
+│ │e││e││e││e││
+│ │e││e││e││e││
+│ └┬┘└┬┘└┬┘└┬┘│
+│  └──┴──┴──┴─┘│
+│    Voting    │
+└──────┬───────┘
+       │
+  Price Range
+  $15K - $18K</pre>
                         <div style="margin-top: 10px; font-size: 0.8rem;">
                             Accuracy: 92% | Training Data: 50K+ vehicles
                         </div>
@@ -1242,18 +1284,16 @@
                     <h3>Computer Vision</h3>
                     <p>Convolutional Neural Networks assess vehicle condition through image analysis</p>
                     <div class="tech-visual">
-                        <div class="ascii-visualization">
-        Input Image          Conv Layers         Output
-       ┌─────────┐      ┌─┐ ┌─┐ ┌─┐ ┌─┐
-       │ 🚗 Car  │ ───► │C│→│C│→│P│→│F│ ───► Condition
-       │ Photo   │      │o│ │o│ │o│ │C│      Score: 8.5/10
-       └─────────┘      │n│ │n│ │o│ │ │      
-                        │v│ │v│ │l│ │ │      Detected:
-    Features Found:     └─┘ └─┘ └─┘ └─┘      ✓ Minor scratches
-    • Edge detection                          ✓ Good paint
-    • Damage patterns                         ✓ Clean interior
-    • Color analysis                          ✗ No major damage
-                        </div>
+                        <pre class="ascii-visualization">Input Image    Conv Layers    Output
+┌─────────┐   ┌─┐┌─┐┌─┐┌─┐
+│ 🚗 Car  │──▶│C││C││P││F│──▶ Score:
+│  Photo  │   │o││o││o││C│    8.5/10
+└─────────┘   │n││n││o││ │    
+              │v││v││l││ │   Detected:
+Features:     └─┘└─┘└─┘└─┘   ✓ Scratches
+• Edges                      ✓ Paint OK
+• Damage                     ✓ Interior
+• Colors                     ✗ No damage</pre>
                         <div style="margin-top: 10px; font-size: 0.8rem;">
                             Processing: Real-time | Confidence: 95%
                         </div>
@@ -1279,7 +1319,7 @@
                     <p>Continuous model improvement through real-time market data integration</p>
                     <div class="tech-visual">
                         <div class="tech-visual-icon">🔄</div>
-                        <div class="visual-flow vertical">
+                        <div class="visual-flow" id="adaptiveFlow">
                             <div class="visual-node">New Sales Data</div>
                             <span class="visual-arrow">→</span>
                             <div class="visual-node">Model Update</div>
@@ -1368,26 +1408,21 @@
                 <div class="diagram-steps">
                     <div class="diagram-node" data-element="2">Mobile/Web Interface</div>
                     <div class="connector" data-element="3">→</div>
-                    <div class="diagram-node" data-element="4">Image Processing Module</div>
+                    <div class="diagram-node" data-element="3">Image Processing Module</div>
+                    <div class="connector" data-element="4">→</div>
+                    <div class="diagram-node" data-element="4">ML Prediction Engine</div>
                     <div class="connector" data-element="5">→</div>
-                    <div class="diagram-node" data-element="6">ML Prediction Engine</div>
-                    <div class="connector" data-element="7">→</div>
-                    <div class="diagram-node" data-element="8">Market Data Integration</div>
-                    <div class="connector" data-element="9">→</div>
-                    <div class="diagram-node" data-element="10">Valuation Dashboard</div>
+                    <div class="diagram-node" data-element="5">Market Data Integration</div>
+                    <div class="connector" data-element="6">→</div>
+                    <div class="diagram-node" data-element="6">Valuation Dashboard</div>
                 </div>
             </div>
-            <div class="content-box" data-element="11">
+            <div class="content-box" data-element="7">
                 <h3>Technical Flow:</h3>
                 <p>User Input → AI Processing → Database Query → Algorithmic Calculation → Comprehensive Report Generation</p>
             </div>
             <div class="slide-progress">
                 <div class="progress-dot active"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
-                <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
                 <div class="progress-dot"></div>
@@ -1436,10 +1471,12 @@
             // Reset progressive reveal for new slide (except slide 8)
             if (index !== 7) {
                 const newSlide = slides[index];
-                const elements = newSlide.querySelectorAll('[data-element]');
                 const progressDots = newSlide.querySelectorAll('.progress-dot');
                 
-                elements.forEach(el => el.classList.remove('visible'));
+                // Hide all elements
+                newSlide.querySelectorAll('[data-element]').forEach(el => el.classList.remove('visible'));
+                
+                // Reset progress dots
                 progressDots.forEach((dot, i) => {
                     if (i === 0) dot.classList.add('active');
                     else dot.classList.remove('active');
@@ -1447,10 +1484,10 @@
                 
                 newSlide.setAttribute('data-current-element', '0');
                 
-                // Show first element
-                if (elements.length > 0) {
-                    setTimeout(() => elements[0].classList.add('visible'), 100);
-                }
+                // Show first element(s)
+                newSlide.querySelectorAll('[data-element="0"]').forEach(el => {
+                    setTimeout(() => el.classList.add('visible'), 100);
+                });
             }
             
             // Special handling for slide 4 (tech cards)
@@ -1517,18 +1554,27 @@
             if (slideIndex === 7) return false; // Skip for slide 8
             
             const slide = slides[slideIndex];
-            const elements = slide.querySelectorAll('[data-element]');
             const currentElement = parseInt(slide.getAttribute('data-current-element'));
             const progressDots = slide.querySelectorAll('.progress-dot');
             
-            if (currentElement < elements.length - 1) {
-                const nextElement = currentElement + 1;
-                elements[nextElement].classList.add('visible');
+            // Find all unique element indices
+            const elementIndices = [...new Set(Array.from(slide.querySelectorAll('[data-element]')).map(el => parseInt(el.getAttribute('data-element'))))].sort((a, b) => a - b);
+            
+            const currentIndex = elementIndices.indexOf(currentElement);
+            if (currentIndex < elementIndices.length - 1) {
+                const nextElement = elementIndices[currentIndex + 1];
+                
+                // Show all elements with this index
+                slide.querySelectorAll(`[data-element="${nextElement}"]`).forEach(el => {
+                    el.classList.add('visible');
+                });
+                
                 slide.setAttribute('data-current-element', nextElement);
                 
+                // Update progress dots
                 if (progressDots.length > 0) {
                     progressDots.forEach((dot, i) => {
-                        if (i <= nextElement) dot.classList.add('active');
+                        if (i <= currentIndex + 1) dot.classList.add('active');
                         else dot.classList.remove('active');
                     });
                 }
@@ -1557,32 +1603,115 @@
             }
         }
         
-        function prevSlide() {
-            if (currentSlide > 0) {
-                if (currentSlide - 1 === 3) {
-                    currentSlide--;
-                    showSlide(currentSlide);
-                    const slide4 = slides[3];
-                    const techShowcase = slide4.querySelector('.tech-showcase');
-                    const techCards = techShowcase.querySelectorAll('.tech-item');
-                    const techDots = slide4.querySelectorAll('.tech-dot');
-                    techShowcase.setAttribute('data-current-card', (techCards.length - 1).toString());
-                    techCards.forEach(card => card.classList.add('visible'));
-                    techDots.forEach(dot => dot.classList.add('active'));
-                } else {
-                    currentSlide--;
-                    showSlide(currentSlide);
+        function prevElement() {
+            // Special handling for slide 4 (tech cards)
+            if (currentSlide === 3) {
+                const slide4 = slides[3];
+                const techShowcase = slide4.querySelector('.tech-showcase');
+                const currentCard = parseInt(techShowcase.getAttribute('data-current-card'));
+                const techCards = techShowcase.querySelectorAll('.tech-item');
+                const techDots = slide4.querySelectorAll('.tech-dot');
+                const techHint = slide4.querySelector('.tech-hint');
+                
+                if (currentCard > 0) {
+                    // Hide current card
+                    techCards[currentCard].classList.remove('visible');
+                    const prevCard = currentCard - 1;
+                    techShowcase.setAttribute('data-current-card', prevCard);
                     
-                    // Show all elements when going back
-                    if (currentSlide !== 7) {
-                        const slide = slides[currentSlide];
-                        const elements = slide.querySelectorAll('[data-element]');
-                        const progressDots = slide.querySelectorAll('.progress-dot');
-                        
-                        elements.forEach(el => el.classList.add('visible'));
-                        progressDots.forEach(dot => dot.classList.add('active'));
-                        
-                        slide.setAttribute('data-current-element', (elements.length - 1).toString());
+                    // Update layout after card is hidden
+                    setTimeout(updateTechCardsLayout, 100);
+                    
+                    // Update dots
+                    techDots.forEach((dot, index) => {
+                        if (index <= prevCard) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                    
+                    // Show hint again
+                    techHint.classList.remove('hide');
+                    
+                    return true; // Stay on current slide
+                }
+                return false; // No more elements to go back
+            }
+            
+            // For other slides
+            if (currentSlide === 7) return false; // Skip for slide 8
+            
+            const slide = slides[currentSlide];
+            const currentElement = parseInt(slide.getAttribute('data-current-element'));
+            const progressDots = slide.querySelectorAll('.progress-dot');
+            
+            // Find all unique element indices
+            const elementIndices = [...new Set(Array.from(slide.querySelectorAll('[data-element]')).map(el => parseInt(el.getAttribute('data-element'))))].sort((a, b) => a - b);
+            
+            const currentIndex = elementIndices.indexOf(currentElement);
+            if (currentIndex > 0) {
+                // Hide all elements with current index
+                slide.querySelectorAll(`[data-element="${currentElement}"]`).forEach(el => {
+                    el.classList.remove('visible');
+                });
+                
+                const prevElementIndex = elementIndices[currentIndex - 1];
+                slide.setAttribute('data-current-element', prevElementIndex);
+                
+                // Update progress dots
+                if (progressDots.length > 0) {
+                    progressDots.forEach((dot, i) => {
+                        if (i <= currentIndex - 1) {
+                            dot.classList.add('active');
+                        } else {
+                            dot.classList.remove('active');
+                        }
+                    });
+                }
+                
+                return true; // Stay on current slide
+            }
+            return false; // No more elements to go back
+        }
+        
+        function prevSlide() {
+            // First try to go back one element
+            if (prevElement()) {
+                return;
+            }
+            
+            // If no more elements, go to previous slide
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+                
+                // Show all elements of the previous slide
+                if (currentSlide !== 7) {
+                    const slide = slides[currentSlide];
+                    const progressDots = slide.querySelectorAll('.progress-dot');
+                    
+                    // Find all unique element indices and show all
+                    const elementIndices = [...new Set(Array.from(slide.querySelectorAll('[data-element]')).map(el => parseInt(el.getAttribute('data-element'))))].sort((a, b) => a - b);
+                    const lastIndex = elementIndices[elementIndices.length - 1];
+                    
+                    slide.querySelectorAll('[data-element]').forEach(el => el.classList.add('visible'));
+                    progressDots.forEach(dot => dot.classList.add('active'));
+                    
+                    slide.setAttribute('data-current-element', lastIndex.toString());
+                    
+                    // Special handling for slide 4
+                    if (currentSlide === 3) {
+                        const slide4 = slides[3];
+                        const techShowcase = slide4.querySelector('.tech-showcase');
+                        const techCards = techShowcase.querySelectorAll('.tech-item');
+                        const techDots = slide4.querySelectorAll('.tech-dot');
+                        const techHint = slide4.querySelector('.tech-hint');
+                        techShowcase.setAttribute('data-current-card', (techCards.length - 1).toString());
+                        techCards.forEach(card => card.classList.add('visible'));
+                        techDots.forEach(dot => dot.classList.add('active'));
+                        techHint.classList.add('hide');
+                        setTimeout(updateTechCardsLayout, 100);
                     }
                 }
             }
@@ -1619,17 +1748,28 @@
             const slide4 = slides[3];
             if (!slide4 || !slide4.classList.contains('active')) return;
             
-            const visualFlows = slide4.querySelectorAll('.visual-flow');
             const techShowcase = slide4.querySelector('.tech-showcase');
-            const isVertical = window.innerWidth <= 768 || techShowcase.children.length === techShowcase.querySelectorAll('.tech-item.visible').length;
+            const visibleCards = techShowcase.querySelectorAll('.tech-item.visible');
+            const isVertical = window.innerWidth <= 768 || visibleCards.length > 2;
             
-            visualFlows.forEach(flow => {
-                if (isVertical && !flow.querySelector('.visual-factors-grid')) {
-                    flow.classList.add('vertical');
-                } else {
+            // Always make adaptive learning flow vertical
+            const adaptiveFlow = slide4.querySelector('#adaptiveFlow');
+            if (adaptiveFlow) {
+                adaptiveFlow.classList.add('vertical');
+            }
+            
+            // Apply vertical class to other flows when needed
+            if (isVertical) {
+                slide4.querySelectorAll('.visual-flow:not(#adaptiveFlow)').forEach(flow => {
+                    if (!flow.querySelector('.visual-factors-grid')) {
+                        flow.classList.add('vertical');
+                    }
+                });
+            } else {
+                slide4.querySelectorAll('.visual-flow:not(#adaptiveFlow)').forEach(flow => {
                     flow.classList.remove('vertical');
-                }
-            });
+                });
+            }
         }
         
         // Load saved preferences
@@ -1706,6 +1846,12 @@
         
         // Initialize first slide
         showSlide(0);
+        
+        // Ensure first element is visible on load
+        const firstSlide = slides[0];
+        firstSlide.querySelectorAll('[data-element="0"]').forEach(el => {
+            el.classList.add('visible');
+        });
     </script>
 </body>
 </html>
