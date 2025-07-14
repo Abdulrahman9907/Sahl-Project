@@ -105,6 +105,19 @@
             display: inline-block;
             font-weight: 600;
             box-shadow: 0 3px 10px rgba(52, 152, 219, 0.2);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .slide-title.visible {
+            animation: elementReveal 0.5s ease-out forwards;
+        }
+
+        @keyframes elementReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         body.dark-theme .slide-title {
@@ -190,6 +203,12 @@
             border: 1px solid rgba(52, 152, 219, 0.2);
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
             max-width: 1000px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .content-box.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .content-box {
@@ -256,6 +275,12 @@
             padding: 25px;
             border-radius: 12px;
             border-left: 4px solid #2ecc71;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .benefit-item.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .benefit-item {
@@ -272,6 +297,12 @@
             max-width: 1000px;
             margin-left: auto;
             margin-right: auto;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .problem-item.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .problem-item {
@@ -425,91 +456,6 @@
             background: #5dade2;
         }
 
-        .tech-progress {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .slide.active[data-slide-index="3"] .tech-progress {
-            opacity: 1;
-        }
-
-        .tech-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(52, 152, 219, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .tech-dot.active {
-            background: #3498db;
-            transform: scale(1.2);
-        }
-
-        body.dark-theme .tech-dot {
-            background: rgba(93, 173, 226, 0.3);
-        }
-
-        .tech-hint {
-            position: absolute;
-            bottom: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.9rem;
-            color: #7f8c8d;
-            font-style: italic;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            text-align: center;
-        }
-
-        .slide.active[data-slide-index="3"] .tech-hint {
-            opacity: 1;
-        }
-
-        .slide.active[data-slide-index="3"] .tech-hint.hide {
-            opacity: 0;
-        }
-
-        .visual-factors-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            margin: 10px 0;
-        }
-
-        .visual-factors-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            margin: 10px 0;
-        }
-
-        body.dark-theme .tech-hint {
-            color: #95a5a6;
-        }
-
-        .presentation-scaler {
-            transform-origin: center center;
-            transition: transform 0.3s ease;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        body.dark-theme .tech-dot.active {
-            background: #5dade2;
-        }
-
         .steps-flow {
             display: flex;
             justify-content: center;
@@ -536,6 +482,12 @@
             font-weight: 600;
             color: white;
             box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .step-circle.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .step-circle {
@@ -545,6 +497,12 @@
         .flow-arrow {
             font-size: 2rem;
             color: #2ecc71;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .flow-arrow.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .flow-arrow {
@@ -561,6 +519,12 @@
             margin-bottom: 25px;
             text-transform: uppercase;
             letter-spacing: 4px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .app-name.visible {
+            animation: elementReveal 0.5s ease-out forwards;
         }
 
         body.dark-theme .app-name {
@@ -672,70 +636,90 @@
             font-size: 1.2rem;
         }
 
-        .challenge-block {
-            background: #fff9f5;
-            padding: 22px;
-            border-radius: 10px;
-            margin: 18px auto;
-            border: 2px solid #f39c12;
-            text-align: left;
-            max-width: 1000px;
+        .visual-factors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin: 10px 0;
+            max-width: 100%;
+            overflow: hidden;
         }
 
-        body.dark-theme .challenge-block {
-            background: rgba(243, 156, 18, 0.15);
-            border-color: #f39c12;
+        .visual-factors-grid .visual-node {
+            word-break: break-word;
+            font-size: 0.75rem;
+            padding: 5px 6px;
         }
 
-        .diagram-area {
-            background: #f8fbfd;
-            padding: 40px;
-            border-radius: 15px;
-            margin: 35px auto;
-            max-width: 1100px;
-            border: 2px solid #3498db;
+        .tech-hint {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #7f8c8d;
+            font-style: italic;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            text-align: center;
         }
 
-        body.dark-theme .diagram-area {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: #5dade2;
+        .slide.active[data-slide-index="3"] .tech-hint {
+            opacity: 1;
         }
 
-        .diagram-steps {
+        .slide.active[data-slide-index="3"] .tech-hint.hide {
+            opacity: 0;
+        }
+
+        body.dark-theme .tech-hint {
+            color: #95a5a6;
+        }
+
+        .tech-progress {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
+            gap: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .diagram-node {
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            padding: 18px;
-            border-radius: 8px;
-            width: 135px;
-            height: 85px;
+        .slide.active[data-slide-index="3"] .tech-progress {
+            opacity: 1;
+        }
+
+        .tech-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .tech-dot.active {
+            background: #3498db;
+            transform: scale(1.2);
+        }
+
+        body.dark-theme .tech-dot {
+            background: rgba(93, 173, 226, 0.3);
+        }
+
+        body.dark-theme .tech-dot.active {
+            background: #5dade2;
+        }
+
+        .presentation-scaler {
+            transform-origin: center center;
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: white;
-            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
-        }
-
-        body.dark-theme .diagram-node {
-            background: linear-gradient(135deg, #58d68d, #2ecc71);
-        }
-
-        .connector {
-            font-size: 1.4rem;
-            color: #3498db;
-        }
-
-        body.dark-theme .connector {
-            color: #5dade2;
         }
 
         .subtitle {
@@ -768,6 +752,145 @@
 
         body.dark-theme .thank-you-slide p {
             color: #5dade2;
+        }
+
+        .challenge-block {
+            background: #fff9f5;
+            padding: 22px;
+            border-radius: 10px;
+            margin: 18px auto;
+            border: 2px solid #f39c12;
+            text-align: left;
+            max-width: 1000px;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .challenge-block.visible {
+            animation: elementReveal 0.5s ease-out forwards;
+        }
+
+        body.dark-theme .challenge-block {
+            background: rgba(243, 156, 18, 0.15);
+            border-color: #f39c12;
+        }
+
+        .diagram-area {
+            background: #f8fbfd;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 35px auto;
+            max-width: 1100px;
+            border: 2px solid #3498db;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .diagram-area.visible {
+            animation: elementReveal 0.5s ease-out forwards;
+        }
+
+        body.dark-theme .diagram-area {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #5dade2;
+        }
+
+        .diagram-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .diagram-node {
+            background: linear-gradient(135deg, #2ecc71, #27ae60);
+            padding: 18px;
+            border-radius: 8px;
+            width: 135px;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 3px 10px rgba(46, 204, 113, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .diagram-node.visible {
+            animation: elementReveal 0.5s ease-out forwards;
+        }
+
+        body.dark-theme .diagram-node {
+            background: linear-gradient(135deg, #58d68d, #2ecc71);
+        }
+
+        .connector {
+            font-size: 1.4rem;
+            color: #3498db;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .connector.visible {
+            animation: elementReveal 0.5s ease-out forwards;
+        }
+
+        body.dark-theme .connector {
+            color: #5dade2;
+        }
+
+        .slide-progress {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .slide.active .slide-progress {
+            opacity: 1;
+        }
+
+        .progress-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(52, 152, 219, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .progress-dot.active {
+            background: #3498db;
+            transform: scale(1.5);
+        }
+
+        body.dark-theme .progress-dot {
+            background: rgba(93, 173, 226, 0.3);
+        }
+
+        body.dark-theme .progress-dot.active {
+            background: #5dade2;
+        }
+
+        .ascii-visualization {
+            font-family: monospace;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            white-space: pre;
+            color: #2c3e50;
+            margin: 15px 0;
+        }
+
+        body.dark-theme .ascii-visualization {
+            color: #ecf0f1;
         }
 
         /* Mobile Responsive Styles */
@@ -817,43 +940,6 @@
                 grid-template-columns: 1fr;
                 gap: 15px;
                 margin: 25px 0;
-            }
-
-            .tech-visual {
-                padding: 15px;
-                font-size: 0.8rem;
-            }
-
-            .tech-visual-icon {
-                font-size: 2.5rem;
-            }
-
-            .visual-node {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-            }
-
-            .visual-flow {
-                gap: 5px;
-            }
-
-            .tech-progress {
-                bottom: 15px;
-            }
-
-            .tech-dot {
-                width: 8px;
-                height: 8px;
-            }
-
-            .tech-hint {
-                bottom: 40px;
-                font-size: 0.8rem;
-                padding: 0 15px;
-            }
-
-            .visual-factors-grid {
-                grid-template-columns: repeat(2, 1fr);
             }
 
             .benefit-section {
@@ -946,6 +1032,55 @@
             .problem-item {
                 padding: 18px;
             }
+
+            .tech-visual {
+                padding: 15px;
+                font-size: 0.8rem;
+            }
+
+            .tech-visual-icon {
+                font-size: 2.5rem;
+            }
+
+            .visual-node {
+                font-size: 0.7rem;
+                padding: 4px 8px;
+            }
+
+            .visual-flow {
+                gap: 5px;
+            }
+
+            .visual-flow.vertical {
+                flex-direction: column;
+            }
+
+            .visual-flow.vertical .visual-arrow {
+                transform: rotate(90deg);
+            }
+
+            .tech-progress {
+                bottom: 15px;
+            }
+
+            .tech-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .tech-hint {
+                bottom: 40px;
+                font-size: 0.8rem;
+                padding: 0 15px;
+            }
+
+            .visual-factors-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ascii-visualization {
+                font-size: 0.6rem;
+            }
         }
 
         @media screen and (max-width: 480px) {
@@ -989,76 +1124,114 @@
         <div class="presentation-container">
         
         <!-- Slide 1: Product Name -->
-        <div class="slide active">
-            <div class="slide-title">Product Introduction</div>
-            <div class="app-name">SAHL</div>
-            <div class="content-box">
+        <div class="slide active" data-slide-index="0" data-current-element="0">
+            <div class="slide-title" data-element="0">Product Introduction</div>
+            <div class="app-name" data-element="1">SAHL</div>
+            <div class="content-box" data-element="2">
                 <h3>AI-Powered Car Valuation Platform</h3>
                 <p>An intelligent application that provides accurate car valuations using machine learning</p>
                 <p class="subtitle">Sahl = "Easy" in Arabic - because pricing cars should be easy, transparent, and accessible</p>
             </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
         </div>
 
         <!-- Slide 2: Problem it Solves -->
-        <div class="slide">
-            <div class="slide-title">Problem Statement</div>
-            <div class="content-box">
+        <div class="slide" data-slide-index="1" data-current-element="0">
+            <div class="slide-title" data-element="0">Problem Statement</div>
+            <div class="content-box" data-element="1">
                 <h3>Current Market Challenges:</h3>
-                <div class="problem-item">
-                    <strong>Price Uncertainty</strong> - Lack of standardized valuation tools leads to pricing confusion
-                </div>
-                <div class="problem-item">
-                    <strong>Information Asymmetry</strong> - Buyers and sellers operate with incomplete market data
-                </div>
-                <div class="problem-item">
-                    <strong>Time-Intensive Research</strong> - Manual price comparison across multiple platforms
-                </div>
-                <div class="problem-item">
-                    <strong>Market Gap</strong> - Absence of trusted valuation services like KBB in our region
-                </div>
+            </div>
+            <div class="problem-item" data-element="2">
+                <strong>Price Uncertainty</strong> - Lack of standardized valuation tools leads to pricing confusion
+            </div>
+            <div class="problem-item" data-element="3">
+                <strong>Information Asymmetry</strong> - Buyers and sellers operate with incomplete market data
+            </div>
+            <div class="problem-item" data-element="4">
+                <strong>Time-Intensive Research</strong> - Manual price comparison across multiple platforms
+            </div>
+            <div class="problem-item" data-element="5">
+                <strong>Market Gap</strong> - Absence of trusted valuation services like KBB in our region
+            </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
 
         <!-- Slide 3: How it Works -->
-        <div class="slide">
-            <div class="slide-title">Solution Overview</div>
+        <div class="slide" data-slide-index="2" data-current-element="0">
+            <div class="slide-title" data-element="0">Solution Overview</div>
             <div class="steps-flow">
-                <div class="step-circle">
+                <div class="step-circle" data-element="1">
                     📝<br>Input Vehicle Details
                 </div>
-                <div class="flow-arrow">➤</div>
-                <div class="step-circle">
+                <div class="flow-arrow" data-element="2">➤</div>
+                <div class="step-circle" data-element="3">
                     📸<br>Upload Vehicle Images
                 </div>
-                <div class="flow-arrow">➤</div>
-                <div class="step-circle">
+                <div class="flow-arrow" data-element="4">➤</div>
+                <div class="step-circle" data-element="5">
                     🤖<br>AI Analysis & Processing
                 </div>
-                <div class="flow-arrow">➤</div>
-                <div class="step-circle">
+                <div class="flow-arrow" data-element="6">➤</div>
+                <div class="step-circle" data-element="7">
                     💰<br>Receive Valuation Report
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" data-element="8">
                 <p>The platform analyzes visual data, processes market information, and delivers comprehensive pricing insights within seconds</p>
+            </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
 
         <!-- Slide 4: AI/ML Technologies -->
         <div class="slide" data-slide-index="3">
-            <div class="slide-title">Technical Implementation</div>
+            <div class="slide-title visible">Technical Implementation</div>
             <div class="tech-showcase" data-current-card="0">
                 <div class="tech-item" data-card="0">
                     <h3>Machine Learning Models</h3>
                     <p>Random Forest algorithms trained on extensive historical sales data for price prediction</p>
                     <div class="tech-visual">
-                        <div class="tech-visual-icon">🌳</div>
-                        <div class="visual-flow">
-                            <div class="visual-node">Historical Data</div>
-                            <span class="visual-arrow">→</span>
-                            <div class="visual-node">Random Forest</div>
-                            <span class="visual-arrow">→</span>
-                            <div class="visual-node">Price Prediction</div>
+                        <div class="ascii-visualization">
+                    Car Data
+                      │
+                 ┌────┴────┐
+                 │ Features │
+                 └────┬────┘
+                      │
+           ┌──────────┴──────────┐
+           │   Random Forest     │
+           │  ┌─┐ ┌─┐ ┌─┐ ┌─┐  │
+           │  │T│ │T│ │T│ │T│  │  ← Decision Trees
+           │  │r│ │r│ │r│ │r│  │
+           │  │e│ │e│ │e│ │e│  │
+           │  │e│ │e│ │e│ │e│  │
+           │  └┬┘ └┬┘ └┬┘ └┬┘  │
+           │   └───┴───┴───┴───┐│
+           │              Voting││
+           └──────────┬─────────┘
+                      │
+                 Price Range
+                 $15K - $18K
                         </div>
                         <div style="margin-top: 10px; font-size: 0.8rem;">
                             Accuracy: 92% | Training Data: 50K+ vehicles
@@ -1069,16 +1242,20 @@
                     <h3>Computer Vision</h3>
                     <p>Convolutional Neural Networks assess vehicle condition through image analysis</p>
                     <div class="tech-visual">
-                        <div class="tech-visual-icon">👁️</div>
-                        <div class="visual-flow">
-                            <div class="visual-node">Car Image</div>
-                            <span class="visual-arrow">→</span>
-                            <div class="visual-node">CNN Layers</div>
-                            <span class="visual-arrow">→</span>
-                            <div class="visual-node">Condition Score</div>
+                        <div class="ascii-visualization">
+        Input Image          Conv Layers         Output
+       ┌─────────┐      ┌─┐ ┌─┐ ┌─┐ ┌─┐
+       │ 🚗 Car  │ ───► │C│→│C│→│P│→│F│ ───► Condition
+       │ Photo   │      │o│ │o│ │o│ │C│      Score: 8.5/10
+       └─────────┘      │n│ │n│ │o│ │ │      
+                        │v│ │v│ │l│ │ │      Detected:
+    Features Found:     └─┘ └─┘ └─┘ └─┘      ✓ Minor scratches
+    • Edge detection                          ✓ Good paint
+    • Damage patterns                         ✓ Clean interior
+    • Color analysis                          ✗ No major damage
                         </div>
                         <div style="margin-top: 10px; font-size: 0.8rem;">
-                            Detects: Damage, Wear, Modifications
+                            Processing: Real-time | Confidence: 95%
                         </div>
                     </div>
                 </div>
@@ -1102,7 +1279,7 @@
                     <p>Continuous model improvement through real-time market data integration</p>
                     <div class="tech-visual">
                         <div class="tech-visual-icon">🔄</div>
-                        <div class="visual-flow">
+                        <div class="visual-flow vertical">
                             <div class="visual-node">New Sales Data</div>
                             <span class="visual-arrow">→</span>
                             <div class="visual-node">Model Update</div>
@@ -1125,10 +1302,10 @@
         </div>
 
         <!-- Slide 5: Benefits -->
-        <div class="slide">
-            <div class="slide-title">Value Proposition</div>
+        <div class="slide" data-slide-index="4" data-current-element="0">
+            <div class="slide-title" data-element="0">Value Proposition</div>
             <div class="benefit-section">
-                <div class="benefit-item">
+                <div class="benefit-item" data-element="1">
                     <h3>For Sellers</h3>
                     <ul>
                         <li>Reduce research time by 90%</li>
@@ -1136,7 +1313,7 @@
                         <li>Enhanced negotiation position</li>
                     </ul>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-element="2">
                     <h3>For Buyers</h3>
                     <ul>
                         <li>Validate asking prices instantly</li>
@@ -1144,7 +1321,7 @@
                         <li>Make informed purchase decisions</li>
                     </ul>
                 </div>
-                <div class="benefit-item">
+                <div class="benefit-item" data-element="3">
                     <h3>Market Impact</h3>
                     <ul>
                         <li>Increased transaction transparency</li>
@@ -1153,50 +1330,82 @@
                     </ul>
                 </div>
             </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
         </div>
 
         <!-- Slide 6: Challenges and Risks -->
-        <div class="slide">
-            <div class="slide-title">Risk Mitigation Strategy</div>
-            <div class="challenge-block">
+        <div class="slide" data-slide-index="5" data-current-element="0">
+            <div class="slide-title" data-element="0">Risk Mitigation Strategy</div>
+            <div class="challenge-block" data-element="1">
                 <h3>🎯 Challenge: Limited data for rare vehicles</h3>
                 <p><strong>Solution:</strong> Initial focus on high-volume models (Toyota, Nissan, Honda) with phased expansion as data accumulates</p>
             </div>
-            <div class="challenge-block">
+            <div class="challenge-block" data-element="2">
                 <h3>🎯 Challenge: Building user trust</h3>
                 <p><strong>Solution:</strong> Strategic partnerships with established dealerships, transparency in methodology, and free trial period</p>
             </div>
-            <div class="challenge-block">
+            <div class="challenge-block" data-element="3">
                 <h3>🎯 Challenge: Data acquisition and quality</h3>
                 <p><strong>Solution:</strong> Collaboration with automotive marketplaces and implementation of data validation protocols</p>
+            </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
 
         <!-- Slide 7: Product Diagram -->
-        <div class="slide">
-            <div class="slide-title">System Architecture</div>
-            <div class="diagram-area">
+        <div class="slide" data-slide-index="6" data-current-element="0">
+            <div class="slide-title" data-element="0">System Architecture</div>
+            <div class="diagram-area" data-element="1">
                 <div class="diagram-steps">
-                    <div class="diagram-node">Mobile/Web Interface</div>
-                    <div class="connector">→</div>
-                    <div class="diagram-node">Image Processing Module</div>
-                    <div class="connector">→</div>
-                    <div class="diagram-node">ML Prediction Engine</div>
-                    <div class="connector">→</div>
-                    <div class="diagram-node">Market Data Integration</div>
-                    <div class="connector">→</div>
-                    <div class="diagram-node">Valuation Dashboard</div>
+                    <div class="diagram-node" data-element="2">Mobile/Web Interface</div>
+                    <div class="connector" data-element="3">→</div>
+                    <div class="diagram-node" data-element="4">Image Processing Module</div>
+                    <div class="connector" data-element="5">→</div>
+                    <div class="diagram-node" data-element="6">ML Prediction Engine</div>
+                    <div class="connector" data-element="7">→</div>
+                    <div class="diagram-node" data-element="8">Market Data Integration</div>
+                    <div class="connector" data-element="9">→</div>
+                    <div class="diagram-node" data-element="10">Valuation Dashboard</div>
                 </div>
             </div>
-            <div class="content-box">
+            <div class="content-box" data-element="11">
                 <h3>Technical Flow:</h3>
                 <p>User Input → AI Processing → Database Query → Algorithmic Calculation → Comprehensive Report Generation</p>
+            </div>
+            <div class="slide-progress">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
             </div>
         </div>
 
         <!-- Slide 8: Thank You -->
-        <div class="slide">
+        <div class="slide" data-slide-index="7">
             <div class="thank-you-slide">
+                <div class="app-name visible">SAHL</div>
+                <div class="content-box visible">
+                    <h3>AI-Powered Car Valuation Platform</h3>
+                    <p>An intelligent application that provides accurate car valuations using machine learning</p>
+                    <p class="subtitle">Sahl = "Easy" in Arabic - because pricing cars should be easy, transparent, and accessible</p>
+                </div>
                 <h1>Thank You</h1>
                 <p>Questions and Discussion</p>
             </div>
@@ -1224,7 +1433,27 @@
             slides[index].classList.add('active');
             document.getElementById('current-slide').textContent = index + 1;
             
-            // Reset tech cards visibility when entering slide 4
+            // Reset progressive reveal for new slide (except slide 8)
+            if (index !== 7) {
+                const newSlide = slides[index];
+                const elements = newSlide.querySelectorAll('[data-element]');
+                const progressDots = newSlide.querySelectorAll('.progress-dot');
+                
+                elements.forEach(el => el.classList.remove('visible'));
+                progressDots.forEach((dot, i) => {
+                    if (i === 0) dot.classList.add('active');
+                    else dot.classList.remove('active');
+                });
+                
+                newSlide.setAttribute('data-current-element', '0');
+                
+                // Show first element
+                if (elements.length > 0) {
+                    setTimeout(() => elements[0].classList.add('visible'), 100);
+                }
+            }
+            
+            // Special handling for slide 4 (tech cards)
             if (index === 3) {
                 const techShowcase = slides[index].querySelector('.tech-showcase');
                 const techCards = techShowcase.querySelectorAll('.tech-item');
@@ -1239,7 +1468,6 @@
                     }
                 });
                 
-                // Reset progress dots
                 techDots.forEach((dot, dotIndex) => {
                     if (dotIndex === 0) {
                         dot.classList.add('active');
@@ -1248,8 +1476,10 @@
                     }
                 });
                 
-                // Reset hint
                 techHint.classList.remove('hide');
+                
+                // Check if we need vertical layout
+                updateTechCardsLayout();
             }
         }
         
@@ -1266,7 +1496,6 @@
                 techCards[nextCard].classList.add('visible');
                 techShowcase.setAttribute('data-current-card', nextCard);
                 
-                // Update progress dots
                 techDots.forEach((dot, index) => {
                     if (index <= nextCard) {
                         dot.classList.add('active');
@@ -1275,21 +1504,50 @@
                     }
                 });
                 
-                // Hide hint when all cards are revealed
                 if (nextCard === techCards.length - 1) {
                     techHint.classList.add('hide');
                 }
                 
-                return true; // Stay on current slide
+                return true;
             }
-            return false; // Move to next slide
+            return false;
+        }
+        
+        function handleProgressiveReveal(slideIndex) {
+            if (slideIndex === 7) return false; // Skip for slide 8
+            
+            const slide = slides[slideIndex];
+            const elements = slide.querySelectorAll('[data-element]');
+            const currentElement = parseInt(slide.getAttribute('data-current-element'));
+            const progressDots = slide.querySelectorAll('.progress-dot');
+            
+            if (currentElement < elements.length - 1) {
+                const nextElement = currentElement + 1;
+                elements[nextElement].classList.add('visible');
+                slide.setAttribute('data-current-element', nextElement);
+                
+                if (progressDots.length > 0) {
+                    progressDots.forEach((dot, i) => {
+                        if (i <= nextElement) dot.classList.add('active');
+                        else dot.classList.remove('active');
+                    });
+                }
+                
+                return true;
+            }
+            return false;
         }
         
         function nextSlide() {
-            // Check if we're on slide 4 and have more cards to show
+            // Special handling for slide 4
             if (currentSlide === 3) {
                 if (handleSlide4Click()) {
-                    return; // Don't advance slide
+                    return;
+                }
+            } else if (currentSlide !== 3 && currentSlide !== 7) {
+                // Progressive reveal for other slides (except 4 and 8)
+                if (handleProgressiveReveal(currentSlide)) {
+                    return;
                 }
             }
             
@@ -1301,7 +1559,6 @@
         
         function prevSlide() {
             if (currentSlide > 0) {
-                // If moving back TO slide 4, show all cards
                 if (currentSlide - 1 === 3) {
                     currentSlide--;
                     showSlide(currentSlide);
@@ -1315,6 +1572,18 @@
                 } else {
                     currentSlide--;
                     showSlide(currentSlide);
+                    
+                    // Show all elements when going back
+                    if (currentSlide !== 7) {
+                        const slide = slides[currentSlide];
+                        const elements = slide.querySelectorAll('[data-element]');
+                        const progressDots = slide.querySelectorAll('.progress-dot');
+                        
+                        elements.forEach(el => el.classList.add('visible'));
+                        progressDots.forEach(dot => dot.classList.add('active'));
+                        
+                        slide.setAttribute('data-current-element', (elements.length - 1).toString());
+                    }
                 }
             }
         }
@@ -1337,7 +1606,6 @@
             const zoomValueElement = document.getElementById('zoomValue');
             zoomValueElement.textContent = value + '%';
             
-            // Highlight recommended TV viewing range
             if (value >= 120 && value <= 130) {
                 zoomValueElement.style.color = '#2ecc71';
             } else {
@@ -1347,12 +1615,28 @@
             localStorage.setItem('presentationZoom', value);
         }
         
-        // Load saved theme preference
+        function updateTechCardsLayout() {
+            const slide4 = slides[3];
+            if (!slide4 || !slide4.classList.contains('active')) return;
+            
+            const visualFlows = slide4.querySelectorAll('.visual-flow');
+            const techShowcase = slide4.querySelector('.tech-showcase');
+            const isVertical = window.innerWidth <= 768 || techShowcase.children.length === techShowcase.querySelectorAll('.tech-item.visible').length;
+            
+            visualFlows.forEach(flow => {
+                if (isVertical && !flow.querySelector('.visual-factors-grid')) {
+                    flow.classList.add('vertical');
+                } else {
+                    flow.classList.remove('vertical');
+                }
+            });
+        }
+        
+        // Load saved preferences
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-theme');
         }
         
-        // Load saved zoom preference
         const savedZoom = localStorage.getItem('presentationZoom');
         if (savedZoom) {
             currentZoom = parseInt(savedZoom);
@@ -1372,21 +1656,20 @@
         
         function handleSwipe() {
             if (touchEndX < touchStartX - 50) {
-                nextSlide(); // Swipe left
+                nextSlide();
             }
             if (touchEndX > touchStartX + 50) {
-                prevSlide(); // Swipe right
+                prevSlide();
             }
         }
         
-        // Click support (avoiding the theme toggle, settings, and zoom control)
+        // Click support
         document.addEventListener('click', function(event) {
             const isControl = event.target.closest('.theme-toggle') || 
                             event.target.closest('.settings-icon') || 
                             event.target.closest('.zoom-control');
             
             if (!isControl) {
-                // Close zoom control if open
                 const zoomControl = document.getElementById('zoomControl');
                 if (zoomControl.classList.contains('active')) {
                     zoomControl.classList.remove('active');
@@ -1407,7 +1690,7 @@
             }
         });
         
-        // Prevent text selection during presentation
+        // Prevent text selection
         document.addEventListener('selectstart', function(e) {
             const isControl = e.target.closest('.theme-toggle') || 
                             e.target.closest('.settings-icon') || 
@@ -1417,6 +1700,12 @@
                 e.preventDefault();
             }
         });
+        
+        // Update layout on resize
+        window.addEventListener('resize', updateTechCardsLayout);
+        
+        // Initialize first slide
+        showSlide(0);
     </script>
 </body>
 </html>
