@@ -915,237 +915,343 @@
         /* Mobile Responsive Styles */
         @media screen and (max-width: 768px) {
             .presentation-container {
-                padding: 15px;
+                padding: 10px; /* Reduced padding */
             }
 
             .slide-title {
-                font-size: 1.1rem;
-                padding: 8px 20px;
-                margin-bottom: 25px;
+                font-size: 1.2rem; /* Slightly larger */
+                padding: 10px 20px;
+                margin-bottom: 20px;
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem; /* Increased */
                 margin-bottom: 20px;
+                line-height: 1.1; /* Better line height */
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 2.2rem; /* Increased */
                 margin-bottom: 20px;
+                line-height: 1.2;
             }
 
             h3 {
-                font-size: 1.4rem;
+                font-size: 1.6rem; /* Increased */
                 margin-bottom: 15px;
+                line-height: 1.3;
             }
 
             p, li {
-                font-size: 1.1rem;
-                line-height: 1.6;
+                font-size: 1.2rem; /* Increased */
+                line-height: 1.7; /* Better readability */
+                margin-bottom: 15px;
             }
 
             .app-name {
-                font-size: 3.5rem;
+                font-size: 4rem; /* Increased */
                 letter-spacing: 2px;
+                margin-bottom: 20px;
             }
 
             .content-box {
-                padding: 25px;
-                margin: 20px auto;
+                padding: 20px; /* Better padding */
+                margin: 15px auto;
+                font-size: 1.1rem; /* Ensure readable text */
             }
 
+            /* Better touch targets */
+            .theme-toggle {
+                font-size: 0.9rem;
+                padding: 10px 16px; /* Larger touch target */
+                top: 10px;
+                left: 10px;
+                min-height: 44px; /* iOS recommended touch size */
+                min-width: 44px;
+            }
+
+            .slide-counter {
+                font-size: 1.1rem;
+                padding: 12px 20px; /* Larger touch target */
+                top: 10px;
+                right: 10px;
+                min-height: 44px;
+            }
+
+            .settings-icon {
+                top: 10px;
+                right: 130px;
+                width: 44px; /* iOS recommended size */
+                height: 44px;
+            }
+
+            .settings-icon svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .zoom-control {
+                top: 65px;
+                right: 10px;
+                min-width: 200px;
+                padding: 20px; /* More padding for easier interaction */
+            }
+
+            .zoom-slider {
+                height: 10px; /* Thicker slider for easier touch */
+            }
+
+            .zoom-slider::-webkit-slider-thumb {
+                width: 24px; /* Larger thumb */
+                height: 24px;
+            }
+
+            .zoom-slider::-moz-range-thumb {
+                width: 24px;
+                height: 24px;
+            }
+
+            /* Improve card layouts */
             .feature-container,
             .tech-showcase {
                 grid-template-columns: 1fr;
-                gap: 15px;
-                margin: 25px 0;
+                gap: 20px; /* More spacing */
+                margin: 20px 0;
             }
 
             .benefit-section {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                margin: 20px 0;
             }
 
             .steps-flow {
                 flex-direction: column;
+                gap: 20px; /* More spacing */
+                margin: 25px 0;
+            }
+
+            .step-circle {
+                width: 140px; /* Slightly larger */
+                height: 140px;
+                font-size: 1rem;
+                padding: 20px;
+                margin: 0 auto; /* Center circles */
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                font-size: 1.8rem; /* Larger arrows */
+                margin: 10px 0;
+            }
+
+            /* Better diagram layout */
+            .diagram-area {
+                padding: 15px;
+                margin: 20px auto;
+            }
+
+            .diagram-steps {
+                flex-direction: column;
                 gap: 15px;
-                margin: 30px 0;
+                align-items: center;
+            }
+
+            .diagram-node {
+                width: 100%;
+                max-width: 250px; /* Wider for better text */
+                height: 80px;
+                font-size: 0.95rem;
+                padding: 10px;
+            }
+
+            .connector {
+                transform: rotate(90deg);
+                font-size: 1.5rem;
+                margin: 5px 0;
+            }
+
+            /* Improve visual elements */
+            .tech-visual {
+                padding: 15px;
+                font-size: 0.9rem; /* Slightly larger */
+                overflow-x: auto;
+                overflow-y: hidden;
+                max-width: 100%;
+                border-radius: 10px;
+            }
+
+            .tech-visual-icon {
+                font-size: 2.8rem; /* Larger icons */
+            }
+
+            .visual-node {
+                font-size: 0.8rem; /* Larger text */
+                padding: 6px 10px;
+                margin: 2px;
+            }
+
+            .visual-flow {
+                gap: 8px;
+                margin: 15px 0;
+            }
+
+            .visual-flow.vertical {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .visual-flow.vertical .visual-arrow {
+                transform: rotate(90deg);
+                margin: 5px 0;
+            }
+
+            /* Progress indicators */
+            .tech-progress {
+                bottom: 20px;
+            }
+
+            .tech-dot {
+                width: 10px; /* Larger dots */
+                height: 10px;
+            }
+
+            .tech-hint {
+                bottom: 50px;
+                font-size: 0.9rem; /* Larger text */
+                padding: 0 20px;
+                line-height: 1.4;
+            }
+
+            .slide-progress {
+                bottom: 20px;
+            }
+
+            .progress-dot {
+                width: 8px; /* Larger dots */
+                height: 8px;
+            }
+
+            /* Grid improvements */
+            .visual-factors-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                margin: 15px 0;
+            }
+            
+            .visual-factors-grid .visual-node {
+                font-size: 0.75rem;
+                padding: 6px 8px;
+                text-align: center;
+            }
+
+            /* ASCII art improvements */
+            .ascii-visualization {
+                font-size: 0.6rem; /* Slightly larger */
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding: 12px;
+                line-height: 1.2;
+                border-radius: 8px;
+            }
+
+            /* Card improvements */
+            .feature-box,
+            .tech-item,
+            .benefit-item,
+            .challenge-block,
+            .problem-item {
+                padding: 20px; /* More padding */
+                margin: 10px 0;
+                border-radius: 12px;
+            }
+
+            /* Thank you slide */
+            .thank-you-slide h1 {
+                font-size: 3.5rem; /* Larger */
+            }
+
+            .thank-you-slide p {
+                font-size: 1.6rem; /* Larger */
+                line-height: 1.4;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+
+            .app-name {
+                font-size: 3.2rem; /* Larger */
+                letter-spacing: 1px;
+            }
+
+            .content-box {
+                padding: 15px;
+                margin: 10px 5px; /* Side margins */
+            }
+
+            p, li {
+                font-size: 1.1rem; /* Ensure readability */
+                line-height: 1.6;
+            }
+
+            .slide-title {
+                font-size: 1.1rem;
+                padding: 8px 16px;
+            }
+
+            /* Smaller screens get more conservative spacing */
+            .ascii-visualization {
+                font-size: 0.55rem;
+                padding: 10px;
+            }
+
+            .visual-factors-grid {
+                gap: 6px;
+                margin: 10px 0;
+            }
+
+            .visual-factors-grid .visual-node {
+                font-size: 0.7rem;
+                padding: 4px 6px;
             }
 
             .step-circle {
                 width: 120px;
                 height: 120px;
                 font-size: 0.9rem;
-                padding: 15px;
             }
 
-            .flow-arrow {
-                transform: rotate(90deg);
-                font-size: 1.5rem;
-            }
-
-            .diagram-area {
-                padding: 20px;
-            }
-
-            .diagram-steps {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .diagram-node {
-                width: 100%;
-                max-width: 200px;
-                height: 70px;
+            .tech-visual {
+                padding: 12px;
                 font-size: 0.85rem;
             }
 
-            .connector {
-                transform: rotate(90deg);
-            }
-
-            .theme-toggle {
-                font-size: 0.8rem;
-                padding: 6px 12px;
-                top: 15px;
-                left: 15px;
-            }
-
-            .slide-counter {
-                font-size: 1rem;
-                padding: 8px 15px;
-                top: 15px;
-                right: 15px;
-            }
-
-            .settings-icon {
-                top: 15px;
-                right: 120px;
-                width: 35px;
-                height: 35px;
-            }
-
-            .settings-icon svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            .zoom-control {
-                top: 60px;
-                right: 15px;
-                min-width: 180px;
-            }
-
             .thank-you-slide h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
 
             .thank-you-slide p {
                 font-size: 1.4rem;
             }
-
-            .feature-box,
-            .tech-item,
-            .benefit-item,
-            .challenge-block,
-            .problem-item {
-                padding: 18px;
-            }
-
-            .tech-visual {
-                padding: 15px;
-                font-size: 0.8rem;
-                overflow-x: auto;
-                overflow-y: hidden;
-                max-width: 100%;
-            }
-
-            .tech-visual-icon {
-                font-size: 2.5rem;
-            }
-
-            .visual-node {
-                font-size: 0.7rem;
-                padding: 4px 8px;
-            }
-
-            .visual-flow {
-                gap: 5px;
-            }
-
-            .visual-flow.vertical {
-                flex-direction: column;
-            }
-
-            .visual-flow.vertical .visual-arrow {
-                transform: rotate(90deg);
-            }
-
-            .tech-progress {
-                bottom: 15px;
-            }
-
-            .tech-dot {
-                width: 8px;
-                height: 8px;
-            }
-
-            .tech-hint {
-                bottom: 40px;
-                font-size: 0.8rem;
-                padding: 0 15px;
-            }
-
-            .visual-factors-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .visual-factors-grid .visual-node {
-                font-size: 0.7rem;
-                padding: 4px 5px;
-            }
-
-            .ascii-visualization {
-                font-size: 0.5rem;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding: 8px;
-                line-height: 1.1;
-            }
-
-            .tech-visual pre {
-                margin: 0;
-            }
         }
 
-        @media screen and (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
+        /* Improve touch interaction */
+        @media (hover: none) and (pointer: coarse) {
+            /* This targets touch devices */
+            .feature-box:hover,
+            .tech-item.visible:hover {
+                transform: none; /* Remove hover effects on touch */
             }
-
-            .app-name {
-                font-size: 2.8rem;
-            }
-
-            .content-box {
-                padding: 20px;
-            }
-
-            p, li {
-                font-size: 1rem;
-            }
-
-            .ascii-visualization {
-                font-size: 0.45rem;
-            }
-
-            .visual-factors-grid {
-                gap: 3px;
-            }
-
-            .visual-factors-grid .visual-node {
-                font-size: 0.65rem;
-                padding: 3px 4px;
+            
+            /* Make buttons more obvious */
+            .theme-toggle,
+            .settings-icon {
+                border-width: 2px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             }
         }
     </style>
@@ -1786,22 +1892,63 @@ Features:     └─┘└─┘└─┘└─┘   ✓ Scratches
         
         // Touch support for mobile
         document.addEventListener('touchstart', function(event) {
-            touchStartX = event.changedTouches[0].screenX;
-        });
+            // Don't interfere with control interactions
+            const isControl = event.target.closest('.theme-toggle') || 
+                            event.target.closest('.settings-icon') || 
+                            event.target.closest('.zoom-control') ||
+                            event.target.closest('.zoom-slider');
+            
+            if (!isControl) {
+                touchStartX = event.changedTouches[0].screenX;
+                // Prevent default only for presentation area
+                if (!event.target.closest('input, button, select, textarea')) {
+                    event.preventDefault();
+                }
+            }
+        }, { passive: false });
         
         document.addEventListener('touchend', function(event) {
-            touchEndX = event.changedTouches[0].screenX;
-            handleSwipe();
+            const isControl = event.target.closest('.theme-toggle') || 
+                            event.target.closest('.settings-icon') || 
+                            event.target.closest('.zoom-control') ||
+                            event.target.closest('.zoom-slider');
+            
+            if (!isControl) {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            }
         });
         
         function handleSwipe() {
-            if (touchEndX < touchStartX - 50) {
-                nextSlide();
-            }
-            if (touchEndX > touchStartX + 50) {
-                prevSlide();
+            const swipeThreshold = 75; // Increased threshold for better UX
+            const swipeDistance = Math.abs(touchEndX - touchStartX);
+            
+            if (swipeDistance > swipeThreshold) {
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    nextSlide();
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    prevSlide();
+                }
             }
         }
+        
+        // Improved text selection handling
+        document.addEventListener('selectstart', function(e) {
+            const isControl = e.target.closest('.theme-toggle') || 
+                            e.target.closest('.settings-icon') || 
+                            e.target.closest('.zoom-control') ||
+                            e.target.closest('.zoom-label') ||
+                            e.target.closest('.zoom-tip');
+            
+            // Allow text selection in control areas and readable content
+            const isReadableContent = e.target.closest('.content-box') ||
+                                    e.target.closest('.ascii-visualization') ||
+                                    e.target.closest('.tech-visual');
+            
+            if (!isControl && !isReadableContent) {
+                e.preventDefault();
+            }
+        });
         
         // Click support
         document.addEventListener('click', function(event) {
@@ -1827,17 +1974,6 @@ Features:     └─┘└─┘└─┘└─┘   ✓ Scratches
             } else if (event.key === 'ArrowLeft') {
                 event.preventDefault();
                 prevSlide();
-            }
-        });
-        
-        // Prevent text selection
-        document.addEventListener('selectstart', function(e) {
-            const isControl = e.target.closest('.theme-toggle') || 
-                            e.target.closest('.settings-icon') || 
-                            e.target.closest('.zoom-control');
-            
-            if (!isControl) {
-                e.preventDefault();
             }
         });
         
